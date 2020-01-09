@@ -1,0 +1,62 @@
+{
+  "name": "sisense-blox-template-generator",
+  "description": "Sisense BloX template generator plugin for Adobe XD",
+  "version": "2.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "keywords": ["sisense","adobe","blox"],
+  "author": {
+    "name" : "Lio Fleishman",
+    "email" : "lio.fleishman@sisense.com",
+    "url" : "https://www.sisense.com/"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/sisense/adobe-xd-blox-plugin.git"
+  },
+  "scripts": {
+    "dev": "./node_modules/.bin/nodemon -w src -e js -w webpack.config.js --exec yarn dev:nodemon-exec",
+    "dev:nodemon-exec": "yarn build & yarn xd:reload-plugins & yarn plugin:watch",
+    "watch": "nodemon -w src -e js,jsx,json,css -w webpack.config.js -x yarn build",
+    "build": "webpack --mode development",
+    "lint": "eslint src",
+    "test": "jest",
+    "build:prod": "./node_modules/.bin/webpack --mode production",
+    "plugin:install": "./node_modules/.bin/xdpm install -o",
+    "plugin:watch": "./node_modules/.bin/xdpm watch",
+    "plugin:validate": "./node_modules/.bin/xdpm validate",
+    "plugin:publish": "yarn build:prod && ./node_modules/.bin/xdpm publish",
+    "xd:reload-plugins": "node ./scripts/reload-xd.js"
+  },
+  "devDependencies": {
+    "@adobe/xdpm": "^3.0.2",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.17.0",
+    "file-loader": "^1.1.11",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "react-test-renderer": "^16.12.0",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  }
+}

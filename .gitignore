@@ -1,0 +1,5 @@
+node_modules
+.DS_Store
+.whitesource
+.gitlab-ci.yml
+*.log
